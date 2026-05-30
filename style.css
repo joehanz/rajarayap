@@ -25,29 +25,28 @@ line-height:1.6;
 /* =====================================================
    BACKGROUND GLOW
 ===================================================== */
-
 .bg-glow{
-position:fixed;
-width:900px;
-height:900px;
+  position: fixed;
+  width: 900px;
+  height: 900px;
 
-/* pindah ke kanan atas */
-top:-350px;
-right:-350px;
-left:auto;
+  /* pindah ke kiri atas */
+  top: -350px;
+  left: -350px;
+  right: auto;
 
-transform:none;
+  transform: none;
 
-background:radial-gradient(
-circle at 30% 30%,
-rgba(0,255,120,.25),
-rgba(0,255,120,.10),
-transparent 70%
-);
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(0,255,120,.30),
+    rgba(0,255,120,.12),
+    transparent 70%
+  );
 
-pointer-events:none;
-z-index:-1;
-filter:blur(90px);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(90px);
 }
 
 
