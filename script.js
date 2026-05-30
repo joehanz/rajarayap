@@ -1,4 +1,3 @@
-```javascript
 /* =====================================================
    MOBILE MENU
 ===================================================== */
@@ -161,4 +160,20 @@ function(){
 document.body.style.opacity='1';
 
 });
-```
+
+
+/* =====================================================
+   HOME PAGE NAVBAR CONTROL
+===================================================== */
+
+window.addEventListener("DOMContentLoaded", function () {
+
+const isHome = document.body.classList.contains("home");
+
+const navbar = document.querySelector(".navbar");
+
+if (isHome && navbar) {
+navbar.style.display = "none";
+}
+
+});
