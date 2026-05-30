@@ -214,6 +214,21 @@ transition:.4s;
 transform:translateY(-5px);
 }
 
+.hero-image1{
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover; /* FULL SCREEN (ini kuncinya) */
+
+  opacity: 0.22; /* transparan halus */
+  filter: brightness(0.7) contrast(1.1) saturate(1.1);
+
+  z-index: 0; /* di belakang konten */
+  pointer-events: none;
+}
 
 /* =====================================================
    INTRO
