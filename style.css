@@ -89,7 +89,7 @@ align-items:center;
   background-size: contain;
   background-position: center;
 
-  opacity: 0.15; /* transparan biar tidak ganggu teks */
+  opacity: 0.4; /* transparan biar tidak ganggu teks */
   z-index: -1;
 }
 .desktop-menu{
