@@ -158,3 +158,19 @@ document
     })();
     //]]>
 
+
+/* REVIEW ACCORDION TOGGLE */
+
+function toggleReviewAccordion(){
+
+  var accordion =
+      document.getElementById('rrReviewAccordion');
+
+  if(accordion.style.display === 'block'){
+    accordion.style.display = 'none';
+  }else{
+    accordion.style.display = 'block';
+  }
+
+}
+
