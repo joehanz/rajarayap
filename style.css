@@ -281,3 +281,11 @@ font-size:15px;
 body.home .navbar{
 display:none;
 }
+
+/* FULL LOCK HOMEPAGE */
+body.home{
+height:100vh;
+overflow:hidden;
+position:fixed;
+width:100%;
+}
