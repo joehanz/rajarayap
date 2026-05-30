@@ -30,17 +30,24 @@ line-height:1.6;
 position:fixed;
 width:900px;
 height:900px;
-top:-300px;
-left:50%;
-transform:translateX(-50%);
+
+/* pindah ke kanan atas */
+top:-350px;
+right:-350px;
+left:auto;
+
+transform:none;
+
 background:radial-gradient(
-circle,
-rgba(0,255,120,.15),
+circle at 30% 30%,
+rgba(0,255,120,.25),
+rgba(0,255,120,.10),
 transparent 70%
 );
+
 pointer-events:none;
 z-index:-1;
-filter:blur(80px);
+filter:blur(90px);
 }
 
 
