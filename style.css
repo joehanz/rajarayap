@@ -27,30 +27,20 @@ line-height:1.6;
 ===================================================== */
 .bg-glow{
   position: fixed;
-  width: 1000px;
-  height: 1000px;
-
-  top: -400px;
-  left: -400px;
-  right: auto;
-
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(0,255,140,.95),
-      rgba(0,255,140,.18),
-      transparent 70%
-    ),
-    linear-gradient(
-      to bottom right,
-      rgba(0,255,140,.12),
-      transparent 60%
-    );
+  inset: 0;
 
   pointer-events: none;
   z-index: -1;
 
-  filter: blur(110px);
+  background: linear-gradient(
+    135deg,
+    rgba(0,255,140,.28) 0%,
+    rgba(0,255,140,.14) 35%,
+    rgba(0,255,140,.06) 65%,
+    rgba(0,0,0,.18) 100%
+  );
+
+  mix-blend-mode: screen;
 }
 
 /* =====================================================
