@@ -3,22 +3,37 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://domainkamu.com/</loc>
-    <changefreq>daily</changefreq>
+    <loc>https://joehanz.github.io/rajarayap/</loc>
     <priority>1.0</priority>
+    <changefreq>daily</changefreq>
   </url>
 
-  <!-- Halaman penting -->
+  <!-- About -->
   <url>
-    <loc>https://domainkamu.com/about.html</loc>
+    <loc>https://joehanz.github.io/rajarayap/about.html</loc>
+    <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 
+  <!-- Portfolio -->
   <url>
-    <loc>https://domainkamu.com/contact.html</loc>
+    <loc>https://joehanz.github.io/rajarayap/portfolio.html</loc>
+    <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Legal -->
+  <url>
+    <loc>https://joehanz.github.io/rajarayap/legal.html</loc>
+    <priority>0.5</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://joehanz.github.io/rajarayap/contact.html</loc>
     <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
 </urlset>
