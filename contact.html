@@ -178,14 +178,24 @@ margin-top:50px">
 
 
 <style>
+  *{
+    box-sizing:border-box;
+  }
+
+  html,body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
   .contact-wrapper{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(3,1fr);
     gap:20px;
     max-width:1100px;
     margin:auto;
-    padding:0px;
-    font-family:Arial;
+    padding:15px;
+    width:100%;
+    font-family:Arial,sans-serif;
   }
 
   .box{
@@ -193,18 +203,24 @@ margin-top:50px">
     color:#fff;
     padding:20px;
     border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    overflow:hidden;
+    word-wrap:break-word;
   }
 
-  .box h2, .box h3{
+  .box h2,
+  .box h3{
     margin-bottom:10px;
   }
 
-  .box p, .box a{
+  .box p,
+  .box a{
     font-size:14px;
     line-height:1.6;
     color:#ddd;
     text-decoration:none;
+    overflow-wrap:break-word;
+    word-break:break-word;
   }
 
   .box a:hover{
@@ -212,6 +228,7 @@ margin-top:50px">
   }
 
   /* Accordion */
+
   .accordion button{
     width:100%;
     padding:10px;
@@ -231,6 +248,7 @@ margin-top:50px">
     border-radius:6px;
     margin-bottom:8px;
     font-size:14px;
+    overflow-wrap:break-word;
   }
 
   .accordion button[aria-expanded="true"] + .accordion-content{
@@ -238,6 +256,7 @@ margin-top:50px">
   }
 
   /* Form */
+
   .contact-form input,
   .contact-form textarea{
     width:100%;
@@ -274,47 +293,87 @@ margin-top:50px">
     font-size:13px;
     margin-top:10px;
   }
+
+  /* Tablet */
+
+  @media(max-width:900px){
+
+    .contact-wrapper{
+      grid-template-columns:repeat(2,1fr);
+    }
+
+  }
+
+  /* Mobile */
+
+  @media(max-width:768px){
+
+    .contact-wrapper{
+      grid-template-columns:1fr;
+      padding:10px;
+    }
+
+  }
+
 </style>
 
 <section class="contact-wrapper">
 
   <!-- KOLOM 1 -->
+
   <div class="box">
+
     <h2>Kantor Pusat</h2>
+
     <p>
-      Jl. Palem VIII No.29 RT.1/RW.8 Petukangan Utara<br/>
+      Jl. Palem VIII No.29 RT.1/RW.8 Petukangan Utara<br>
       Pesanggrahan, Jakarta Selatan 12260
     </p>
 
     <p>
-      📧 <a href="#">pulaupermata@live.com</a><br/>
-      📞 <a href="tel:081299357776">081 299 35 7776</a><br/>
+      📧 <a href="#">pulaupermata@live.com</a><br>
+      📞 <a href="tel:081299357776">081 299 35 7776</a><br>
       📞 <a href="tel:081216173389">081 216 17 3389</a>
     </p>
+
   </div>
 
+
   <!-- KOLOM 2 -->
+
   <div class="box">
+
     <h2>Perbantuan</h2>
 
     <div class="accordion">
 
-      <button aria-expanded="false">JAWA TENGAH</button>
+      <button aria-expanded="false">
+        JAWA TENGAH
+      </button>
+
       <div class="accordion-content">
         <p>
-          ☑ Jl Ambarawa No 3 RT 01/09, Pelabuhan Tanjung Mas, Semarang<br/>
+          ☑ Jl Ambarawa No 3 RT 01/09, Pelabuhan Tanjung Mas, Semarang<br>
           ☑ Jl Kaliurang KM 5.2, Caturtunggal, Sleman (Jogja, Solo, Klaten)
         </p>
       </div>
 
-      <button aria-expanded="false">JAWA BARAT</button>
+
+      <button aria-expanded="false">
+        JAWA BARAT
+      </button>
+
       <div class="accordion-content">
         <p>
           ☑ Perum Pratista Blok F-88 Antapani, Bandung
         </p>
       </div>
 
-      <button aria-expanded="false">SULAWESI SELATAN</button>
+
+      <button aria-expanded="false">
+        SULAWESI SELATAN
+      </button>
+
       <div class="accordion-content">
         <p>
           ☑ Jl Kacong Daeng Lalang No 139B, Somba Opu, Gowa
@@ -322,14 +381,19 @@ margin-top:50px">
       </div>
 
     </div>
+
   </div>
 
+
   <!-- KOLOM 3 -->
+
   <div class="box">
+
     <h2>Jam Operasional</h2>
+
     <p>
-      Senin - Jumat : 08.00 - 18.00<br/>
-      Sabtu : 09.00 - 14.00<br/>
+      Senin - Jumat : 08.00 - 18.00<br>
+      Sabtu : 09.00 - 14.00<br>
       Minggu : Libur
     </p>
 
@@ -338,56 +402,111 @@ margin-top:50px">
     <h3>Kirim Pesan</h3>
 
     <form id="contact-form" class="contact-form">
-      <input type="text" name="name" placeholder="Nama" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <textarea name="message" placeholder="Pesan" required></textarea>
-      <button type="submit">Kirim</button>
+
+      <input
+      type="text"
+      name="name"
+      placeholder="Nama"
+      required>
+
+      <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required>
+
+      <textarea
+      name="message"
+      placeholder="Pesan"
+      required></textarea>
+
+      <button type="submit">
+        Kirim
+      </button>
+
     </form>
 
     <p id="status"></p>
+
   </div>
 
 </section>
 
 <script>
-  // Accordion simple tanpa jQuery
-  const buttons = document.querySelectorAll(".accordion button");
 
-  buttons.forEach(btn => {
-    btn.addEventListener("click", function(){
-      const expanded = this.getAttribute("aria-expanded") === "true";
+const buttons=
+document.querySelectorAll(".accordion button");
 
-      buttons.forEach(b => b.setAttribute("aria-expanded", "false"));
+buttons.forEach(btn=>{
 
-      this.setAttribute("aria-expanded", !expanded);
-    });
-  });
+btn.addEventListener("click",function(){
+
+const expanded=
+this.getAttribute("aria-expanded")==="true";
+
+buttons.forEach(b=>
+b.setAttribute("aria-expanded","false")
+);
+
+this.setAttribute(
+"aria-expanded",
+!expanded
+);
+
+});
+
+});
+
 </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <script>
-  emailjs.init("J3qcHpozcwgGfBwBh");
 
-  const form = document.getElementById("contact-form");
-  const status = document.getElementById("status");
+emailjs.init(
+"J3qcHpozcwgGfBwBh"
+);
 
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
+const form=
+document.getElementById("contact-form");
 
-    status.innerText = "Mengirim...";
+const status=
+document.getElementById("status");
 
-    emailjs.sendForm(
-      "service_v3vsye1",
-      "template_kkufdke",
-      form
-    ).then(() => {
-      status.innerText = "Pesan berhasil dikirim!";
-      form.reset();
-    }).catch(() => {
-      status.innerText = "Gagal mengirim pesan!";
-    });
-  });
+form.addEventListener(
+"submit",
+function(e){
+
+e.preventDefault();
+
+status.innerText=
+"Mengirim...";
+
+emailjs.sendForm(
+"service_v3vsye1",
+"template_kkufdke",
+form
+)
+
+.then(()=>{
+
+status.innerText=
+"Pesan berhasil dikirim!";
+
+form.reset();
+
+})
+
+.catch(()=>{
+
+status.innerText=
+"Gagal mengirim pesan!";
+
+});
+
+});
+
 </script>
 
 
