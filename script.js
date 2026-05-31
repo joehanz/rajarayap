@@ -300,3 +300,30 @@ navbar.style.display = "none";
     })();
     //]]>
 
+
+ /* ===============================
+         ACCORDION
+      =============================== */
+          const buttons=
+          document.querySelectorAll(".accordion button");
+
+          buttons.forEach(btn=>{
+
+          btn.addEventListener("click",function(){
+
+          const expanded=
+          this.getAttribute("aria-expanded")==="true";
+
+          buttons.forEach(b=>
+          b.setAttribute("aria-expanded","false")
+          );
+
+          this.setAttribute(
+          "aria-expanded",
+          !expanded
+          );
+
+          });
+
+          });
+
