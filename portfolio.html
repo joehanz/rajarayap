@@ -193,11 +193,6 @@ border-radius:20px"
 
 
 
-<div
-style="
-padding:30px;
-background:#111;
-border-radius:20px">
 
 <div
         onclick='openModal(`<img src="https://raw.githubusercontent.com/joehanz/rajarayap/refs/heads/main/images/alfi2.webp" style="width:100%">`)'
@@ -212,16 +207,11 @@ border-radius:20px"
       </div>
 
 
-</div>
 
 
 
 
-<div
-style="
-padding:30px;
-background:#111;
-border-radius:20px">
+
 
 <div
         onclick='openModal(`<img src="https://raw.githubusercontent.com/joehanz/rajarayap/refs/heads/main/images/alfi3.webp" style="width:100%">`)'
@@ -236,16 +226,9 @@ border-radius:20px"
       </div>
 
 
-</div>
 
 
     <div
-style="
-padding:30px;
-background:#111;
-border-radius:20px">
-
-<div
         onclick='openModal(`<img src="https://raw.githubusercontent.com/joehanz/rajarayap/refs/heads/main/images/alfi4.webp" style="width:100%">`)'
         style="cursor:pointer"
       >
@@ -257,10 +240,37 @@ border-radius:20px"
         />
       </div>
 
-</div>
-
 
 </div>
+
+    <!-- MODAL -->
+
+      <div
+        id="postModal"
+        style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.95);
+z-index:99999;
+justify-content:center;
+align-items:center;
+padding:30px"
+      >
+        <div
+          onclick="closeModal()"
+          style="
+position:absolute;
+top:20px;
+right:30px;
+font-size:40px;
+cursor:pointer"
+        >
+          ✕
+        </div>
+
+        <div id="modalBody"></div>
+      </div>
 
 </section>
 <center>
