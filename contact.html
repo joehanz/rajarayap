@@ -385,35 +385,8 @@ margin-top:50px"
             <p id="status"></p>
           </div>
         </section>
-
-        <script>
-
-          const buttons=
-          document.querySelectorAll(".accordion button");
-
-          buttons.forEach(btn=>{
-
-          btn.addEventListener("click",function(){
-
-          const expanded=
-          this.getAttribute("aria-expanded")==="true";
-
-          buttons.forEach(b=>
-          b.setAttribute("aria-expanded","false")
-          );
-
-          this.setAttribute(
-          "aria-expanded",
-          !expanded
-          );
-
-          });
-
-          });
-        </script>
-
+        
         <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
         <script>
 
           emailjs.init(
