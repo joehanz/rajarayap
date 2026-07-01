@@ -327,3 +327,87 @@ navbar.style.display = "none";
 
           });
 
+
+/* =====================================================
+   FORM ADMIN → SPREADSHEET
+===================================================== */
+
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzapZ2eOZ6js8EUxyaTgphq0EnVS7Yw66-aW30yuuDwG4bYQhQWJCHzLpTXkUOch1VN/exec";
+
+const description = document.getElementById("description");
+const charCount = document.getElementById("charCount");
+const imageInput = document.getElementById("image");
+const preview = document.getElementById("preview");
+const lihatPostinganBtn = document.getElementById("lihatPostingan");
+
+// counter karakter
+if(description && charCount){
+  description.addEventListener("input", () => {
+    charCount.textContent = `${description.value.length}/3000`;
+  });
+}
+
+// preview gambar
+if(imageInput && preview){
+  imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        preview.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    } else {
+      preview.style.display = "none";
+    }
+  });
+}
+
+// submit form
+const postForm = document.getElementById("postForm");
+if(postForm){
+  postForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const title = document.getElementById("title").value.trim();
+    const desc = description.value.trim();
+    const image = imageInput.files[0];
+
+    if (!title || !desc || !image) {
+      alert("Semua field wajib diisi!");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const base64Image = reader.result;
+
+      const payload = {
+        title: title,
+        description: desc,
+        image: base64Image
+      };
+
+      try {
+        const response = await fetch(WEB_APP_URL, {
+          method: "POST",
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        if (result.status === "success") {
+          alert("Postingan berhasil disimpan dengan ID: " + result.id);
+          if(lihatPostinganBtn){
+            lihatPostinganBtn.style.display = "inline-block";
+          }
+        } else {
+          alert("Error: " + result.message);
+        }
+      } catch(err){
+        alert("Gagal kirim data: " + err);
+      }
+    };
+    reader.readAsDataURL(image);
+  });
+}
