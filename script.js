@@ -241,18 +241,19 @@ navbar.style.display = "none";
 
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzapZ2eOZ6js8EUxyaTgphq0EnVS7Yw66-aW30yuuDwG4bYQhQWJCHzLpTXkUOch1VN/exec";
 
-const descInput = document.getElementById("description"); // ganti nama variabel
-const charCount = document.getElementById("charCount");
+const descInput = document.getElementById("description"); // ganti dari description
+const charCounter = document.getElementById("charCount"); // ganti dari charCount
 const imageInput = document.getElementById("image");
 const preview = document.getElementById("preview");
 const lihatPostinganBtn = document.getElementById("lihatPostingan");
 
 // counter karakter
-if(descInput && charCount){
+if(descInput && charCounter){
   descInput.addEventListener("input", () => {
-    charCount.textContent = `${descInput.value.length}/3000`;
+    charCounter.textContent = `${descInput.value.length}/3000`;
   });
 }
+
 
 // preview gambar
 if(imageInput && preview){
