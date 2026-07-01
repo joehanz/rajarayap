@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home | RAJA RAYAP - Profesional Anti Rayap</title>
-
-  <!-- FONTS & TAILWIND -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
-
-  <!-- ICON -->
-  <link rel="icon" href="images/rajarayap.icon.webp" type="image/webp" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raja Rayap</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-
 <body class="bg-gray-900 text-white font-poppins">
+
   <!-- HERO -->
-  <section class="flex flex-col items-center justify-center min-h-screen text-center px-6 
-                bg-no-repeat bg-center bg-contain relative"
-         style="background: linear-gradient(rgba(0,128,0,0.25), rgba(0,128,128,0.25)),
-                url('https://raw.githubusercontent.com/joehanz/rajarayap/refs/heads/main/images/ChatGPT%20Image%201%20Jul%202026%2C%2010.39.49.png') center/contain no-repeat;">
-
-  <div class="relative z-10">
-    <img src="images/rajarayap.icon.webp" alt="Logo Raja Rayap" class="w-24 h-24 mx-auto mb-4" />
-    <h1 class="text-4xl md:text-5xl font-bold mb-2">RAJA RAYAP</h1>
-    <p class="max-w-xl mx-auto mb-6 text-sm md:text-base leading-relaxed">
-      Jakarta – Tangerang – Serang – Bandung – Tasikmalaya – Garut – 
-      Cirebon – Majalengka – Sumedang – Subang – Indramayu
-    </p>
-
-    <div class="flex flex-col md:flex-row gap-4 justify-center">
-      <a href="update.html" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold">Visitor</a>
-      <a href="admin.html" class="bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold">Admin</a>
+  <section class="relative flex flex-col items-center justify-center min-h-screen text-center px-6">
+    <!-- Background gambar + overlay -->
+    <div class="absolute inset-0">
+      <img src="images/teknisi-properti.jpeg" 
+           alt="Teknisi Raja Rayap" 
+           class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-green-700/30 to-teal-700/30"></div>
     </div>
-  </div>
-</section>
 
+    <!-- Konten -->
+    <div class="relative z-10">
+      <img src="images/rajarayap.icon.webp" alt="Logo Raja Rayap" class="w-24 h-24 mx-auto mb-4" />
+      <h1 class="text-4xl md:text-5xl font-bold mb-2">RAJA RAYAP</h1>
+      <p class="max-w-xl mx-auto mb-6 text-sm md:text-base leading-relaxed">
+        Jakarta – Tangerang – Serang – Bandung – Tasikmalaya – Garut – 
+        Cirebon – Majalengka – Sumedang – Subang – Indramayu
+      </p>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="update.html" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold">Visitor</a>
+        <a href="admin.html" class="bg-gray-600 hover:bg-gray-700 px-6 py-3 rounded-lg font-semibold">Admin</a>
+      </div>
+    </div>
+  </section>
 
 </body>
 </html>
