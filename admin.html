@@ -180,6 +180,18 @@ mmmmmmmmmm
 </footer>
 
 <script src="script.js"></script>
+  <script>
+if (sessionStorage.getItem("adminLogin") !== "true") {
+    window.location.replace("index.html");
+}
+</script>
+  <script>
+history.pushState(null, "", location.href);
+
+window.onpopstate = function () {
+    history.go(1);
+};
+</script>
 
 </body>
 </html>
