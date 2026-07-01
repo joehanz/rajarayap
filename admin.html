@@ -87,18 +87,16 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
 </section>
 
 <script>
-const description = document.getElementById("description");
-const charCount = document.getElementById("charCount");
+const descInput = document.getElementById("description");
+const charCounter = document.getElementById("charCount");
 const imageInput = document.getElementById("image");
 const preview = document.getElementById("preview");
 const lihatPostinganBtn = document.getElementById("lihatPostingan");
 
-// counter karakter
-description.addEventListener("input", () => {
-  charCount.textContent = `${description.value.length}/3000`;
+descInput.addEventListener("input", () => {
+  charCounter.textContent = `${descInput.value.length}/3000`;
 });
 
-// preview gambar
 imageInput.addEventListener("change", () => {
   const file = imageInput.files[0];
   if (file) {
@@ -113,32 +111,49 @@ imageInput.addEventListener("change", () => {
   }
 });
 
-// validasi form
-document.getElementById("postForm").addEventListener("submit", function(e) {
+document.getElementById("postForm").addEventListener("submit", async function(e) {
   e.preventDefault();
 
   const title = document.getElementById("title").value.trim();
-  const desc = description.value.trim();
+  const desc = descInput.value.trim();
   const image = imageInput.files[0];
 
-  if (!title) {
-    alert("Judul wajib diisi!");
-    return;
-  }
-  if (desc.length > 3000) {
-    alert("Deskripsi maksimal 3000 karakter!");
-    return;
-  }
-  if (!image) {
-    alert("Upload foto wajib!");
+  if (!title || !desc || !image) {
+    alert("Semua field wajib diisi!");
     return;
   }
 
-  alert("Form valid, siap kirim!");
-  // munculin tombol lihat postingan
-  lihatPostinganBtn.style.display = "inline-block";
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const base64Image = reader.result;
+
+    const payload = {
+      title: title,
+      description: desc,
+      image: base64Image
+    };
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzapZ2eOZ6js8EUxyaTgphq0EnVS7Yw66-aW30yuuDwG4bYQhQWJCHzLpTXkUOch1VN/exec", {
+        method: "POST",
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+      if (result.status === "success") {
+        alert("Postingan berhasil disimpan dengan ID: " + result.id);
+        lihatPostinganBtn.style.display = "inline-block";
+      } else {
+        alert("Error: " + result.message);
+      }
+    } catch(err){
+      alert("Gagal kirim data: " + err);
+    }
+  };
+  reader.readAsDataURL(image);
 });
 </script>
+
 
 
 
