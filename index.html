@@ -99,6 +99,13 @@
       alert("Terjadi error saat login, coba lagi.");
     }
   });
+
+
+  if (result.success) {
+    sessionStorage.setItem("adminLogin", "true");
+    closePopup();
+    window.location.href = "admin.html";
+}
 </script>
 
 </body>
