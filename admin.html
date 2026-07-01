@@ -46,7 +46,19 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
     </h1>
 
     <p class="mb-6">
-        Selamat datang di Control Panel Admin Raja Rayap.
+        <form id="postForm">
+  <label for="title">Judul:</label>
+  <input type="text" id="title" name="title" required>
+
+  <label for="description">Deskripsi (max 3000 karakter):</label>
+  <textarea id="description" name="description" maxlength="3000" required></textarea>
+
+  <label for="image">Upload Foto:</label>
+  <input type="file" id="image" name="image" accept="image/*" required>
+
+  <button type="submit">Kirim</button>
+</form>
+
     </p>
 
     
