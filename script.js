@@ -241,16 +241,16 @@ navbar.style.display = "none";
 
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzapZ2eOZ6js8EUxyaTgphq0EnVS7Yw66-aW30yuuDwG4bYQhQWJCHzLpTXkUOch1VN/exec";
 
-const description = document.getElementById("description");
+const descInput = document.getElementById("description"); // ganti nama variabel
 const charCount = document.getElementById("charCount");
 const imageInput = document.getElementById("image");
 const preview = document.getElementById("preview");
 const lihatPostinganBtn = document.getElementById("lihatPostingan");
 
 // counter karakter
-if(description && charCount){
-  description.addEventListener("input", () => {
-    charCount.textContent = `${description.value.length}/3000`;
+if(descInput && charCount){
+  descInput.addEventListener("input", () => {
+    charCount.textContent = `${descInput.value.length}/3000`;
   });
 }
 
@@ -278,7 +278,7 @@ if(postForm){
     e.preventDefault();
 
     const title = document.getElementById("title").value.trim();
-    const desc = description.value.trim();
+    const desc = descInput.value.trim(); // pakai descInput
     const image = imageInput.files[0];
 
     if (!title || !desc || !image) {
@@ -292,7 +292,7 @@ if(postForm){
 
       const payload = {
         title: title,
-        description: desc,
+        description: desc, // tetap kirim sebagai description ke .gs
         image: base64Image
       };
 
