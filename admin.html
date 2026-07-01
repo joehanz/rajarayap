@@ -22,21 +22,21 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
   <div class="container">
     <a href="index.html" class="logo">RAJA RAYAP</a>
     <div class="desktop-menu">
-      <a href="update.html">Update</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="legal.html">Legal</a>
-      <a href="contact.html">Contact</a>
+      <button
+        onclick="logout()"
+        class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold">
+        Logout
+    </button>
     </div>
     <div id="burger">☰</div>
   </div>
 
   <div class="mobile-menu" id="mobileMenu">
-      <a href="update.html">Update</a>
-      <a href="about.html">About</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="legal.html">Legal</a>
-      <a href="contact.html">Contact</a>
+      <button
+        onclick="logout()"
+        class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold">
+        Logout
+    </button>
   </div>
 </nav>
 
@@ -49,11 +49,7 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
         Selamat datang di Control Panel Admin Raja Rayap.
     </p>
 
-    <button
-        onclick="logout()"
-        class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold">
-        Logout
-    </button>
+    
 </section>
 
 <footer style="text-align:center;padding:40px 0">
