@@ -56,23 +56,22 @@
 
 <script>
   function openPopup() {
-    document.getElementById('loginPopup').classList.remove('hidden');
-    document.getElementById('loginPopup').classList.add('flex');
+    document.getElementById("loginPopup").classList.remove("hidden");
+    document.getElementById("loginPopup").classList.add("flex");
   }
 
   function closePopup() {
-    document.getElementById('loginPopup').classList.add('hidden');
-    document.getElementById('loginPopup').classList.remove('flex');
+    document.getElementById("loginPopup").classList.add("hidden");
+    document.getElementById("loginPopup").classList.remove("flex");
   }
 
-  document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  document.getElementById("loginForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
     try {
-
       const formData = new URLSearchParams();
       formData.append("username", username);
       formData.append("password", password);
@@ -87,26 +86,30 @@
 
       const result = await response.json();
 
-      if (result.success) {
+      console.log("Login Result:", result);
+
+      if (result.success === true) {
+
+        // Simpan session login
+        sessionStorage.setItem("adminLogin", "true");
+
+        // Tutup popup
         closePopup();
+
+        // Masuk ke halaman admin
         window.location.href = "admin.html";
+
       } else {
+
         alert("Username atau password salah!");
+
       }
 
     } catch (err) {
-      console.error(err);
+      console.error("Login Error:", err);
       alert("Terjadi error saat login, coba lagi.");
     }
   });
-
-
-  if (result.success) {
-    sessionStorage.setItem("adminLogin", "true");
-    closePopup();
-    window.location.href = "admin.html";
-}
 </script>
-
 </body>
 </html>
