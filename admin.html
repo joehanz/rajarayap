@@ -40,40 +40,62 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
   </div>
 </nav>
 
-<section class="intro" style="padding-top:120px;text-align:center">
-    <h1 style="font-size:52px;font-weight:800;margin-bottom:30px;">
-        Control Panel Admin
-    </h1>
+<section class="intro py-32 text-center">
+  <h1 class="text-5xl font-extrabold mb-8">
+    Control Panel Admin
+  </h1>
 
-    <p class="mb-6">
-        <form id="postForm">
-  <label for="title">Judul:</label>
-  <input type="text" id="title" name="title" required>
+  <form id="postForm" class="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-8 space-y-6">
+    <!-- Judul -->
+    <div>
+      <label for="title" class="block text-left font-semibold mb-2">Judul</label>
+      <input type="text" id="title" name="title" required
+        class="w-full border rounded-lg px-4 py-2 focus:ring focus:ring-blue-300">
+    </div>
 
-  <label for="description">Deskripsi (max 3000 karakter):</label>
-  <textarea id="description" name="description" maxlength="3000" required></textarea>
+    <!-- Deskripsi -->
+    <div>
+      <label for="description" class="block text-left font-semibold mb-2">Deskripsi (max 3000 karakter)</label>
+      <textarea id="description" name="description" maxlength="3000" required
+        class="w-full border rounded-lg px-4 py-2 h-40 focus:ring focus:ring-blue-300"></textarea>
+      <p id="charCount" class="text-sm text-gray-500 mt-1 text-right">0/3000</p>
+    </div>
 
-  <label for="image">Upload Foto:</label>
-  <input type="file" id="image" name="image" accept="image/*" required>
+    <!-- Upload Foto -->
+    <div>
+      <label for="image" class="block text-left font-semibold mb-2">Upload Foto</label>
+      <input type="file" id="image" name="image" accept="image/*" required
+        class="w-full border rounded-lg px-4 py-2 focus:ring focus:ring-blue-300">
+    </div>
 
-  <button type="submit">Kirim</button>
-</form>
+    <!-- Tombol -->
+    <button type="submit"
+      class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition">
+      Kirim
+    </button>
+  </form>
+</section>
 
-    </p>
+<script>
+const description = document.getElementById("description");
+const charCount = document.getElementById("charCount");
 
-    <script>
+description.addEventListener("input", () => {
+  charCount.textContent = `${description.value.length}/3000`;
+});
+
 document.getElementById("postForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // cegah submit default
+  e.preventDefault();
 
   const title = document.getElementById("title").value.trim();
-  const description = document.getElementById("description").value.trim();
+  const desc = description.value.trim();
   const image = document.getElementById("image").files[0];
 
   if (!title) {
     alert("Judul wajib diisi!");
     return;
   }
-  if (description.length > 3000) {
+  if (desc.length > 3000) {
     alert("Deskripsi maksimal 3000 karakter!");
     return;
   }
@@ -82,13 +104,10 @@ document.getElementById("postForm").addEventListener("submit", function(e) {
     return;
   }
 
-  // kalau lolos validasi, lanjut ke proses berikutnya
   alert("Form valid, siap kirim!");
 });
 </script>
 
-    
-</section>
 
 <footer style="text-align:center;padding:40px 0">
 © 2026 Raja Rayap
