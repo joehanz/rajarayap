@@ -61,6 +61,32 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
 
     </p>
 
+    <script>
+document.getElementById("postForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // cegah submit default
+
+  const title = document.getElementById("title").value.trim();
+  const description = document.getElementById("description").value.trim();
+  const image = document.getElementById("image").files[0];
+
+  if (!title) {
+    alert("Judul wajib diisi!");
+    return;
+  }
+  if (description.length > 3000) {
+    alert("Deskripsi maksimal 3000 karakter!");
+    return;
+  }
+  if (!image) {
+    alert("Upload foto wajib!");
+    return;
+  }
+
+  // kalau lolos validasi, lanjut ke proses berikutnya
+  alert("Form valid, siap kirim!");
+});
+</script>
+
     
 </section>
 
