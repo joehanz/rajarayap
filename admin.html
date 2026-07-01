@@ -48,28 +48,27 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
   <form id="postForm" class="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-8 space-y-6 text-black">
     <!-- Judul -->
     <div>
-      <label for="title" class="block text-left font-semibold mb-2">Judul</label>
+      <label for="title" class="block text-left font-semibold mb-2 text-black">Judul</label>
       <input type="text" id="title" name="title" required
-        class="w-full border rounded-lg px-4 py-2 focus:ring focus:ring-blue-300">
+        class="w-full border rounded-lg px-4 py-2 focus:ring focus:ring-blue-300 text-black">
     </div>
 
     <!-- Deskripsi -->
     <div>
-      <label for="description" class="block text-left font-semibold mb-2">Deskripsi (max 3000 karakter)</label>
+      <label for="description" class="block text-left font-semibold mb-2 text-black">Deskripsi (max 3000 karakter)</label>
       <textarea id="description" name="description" maxlength="3000" required
-        class="w-full border rounded-lg px-4 py-2 h-40 focus:ring focus:ring-blue-300"></textarea>
-      <p id="charCount" class="text-sm text-gray-500 mt-1 text-right">0/3000</p>
+        class="w-full border rounded-lg px-4 py-2 h-40 focus:ring focus:ring-blue-300 text-black"></textarea>
+      <p id="charCount" class="text-sm text-gray-600 mt-1 text-right">0/3000</p>
     </div>
 
     <!-- Upload Foto -->
-<div>
-  <label for="image" class="block text-left font-semibold mb-2 text-black">Upload Foto</label>
-  <input type="file" id="image" name="image" accept="image/*" required
-    class="w-full border rounded-lg px-4 py-2 focus:ring focus:ring-blue-300 text-black">
-  <!-- Preview -->
-  <img id="preview" class="mt-4 mx-auto max-h-64 rounded-lg shadow" alt="Preview gambar" style="display:none;">
-</div>
-
+    <div>
+      <label for="image" class="block text-left font-semibold mb-2 text-black">Upload Foto</label>
+      <input type="file" id="image" name="image" accept="image/*" required
+        class="w-full border rounded-lg px-4 py-2 focus:ring focus:ring-blue-300 text-black">
+      <!-- Preview -->
+      <img id="preview" class="mt-4 mx-auto max-h-64 rounded-lg shadow" alt="Preview gambar" style="display:none;">
+    </div>
 
     <!-- Tombol -->
     <button type="submit"
@@ -77,22 +76,50 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
       Kirim
     </button>
   </form>
+
+  <!-- Tombol Lihat Postingan (hidden dulu) -->
+  <button id="lihatPostingan"
+    onclick="window.location.href='update.html'"
+    class="mt-6 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold"
+    style="display:none;">
+    Lihat Postingan
+  </button>
 </section>
 
 <script>
 const description = document.getElementById("description");
 const charCount = document.getElementById("charCount");
+const imageInput = document.getElementById("image");
+const preview = document.getElementById("preview");
+const lihatPostinganBtn = document.getElementById("lihatPostingan");
 
+// counter karakter
 description.addEventListener("input", () => {
   charCount.textContent = `${description.value.length}/3000`;
 });
 
+// preview gambar
+imageInput.addEventListener("change", () => {
+  const file = imageInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      preview.src = e.target.result;
+      preview.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  } else {
+    preview.style.display = "none";
+  }
+});
+
+// validasi form
 document.getElementById("postForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const title = document.getElementById("title").value.trim();
   const desc = description.value.trim();
-  const image = document.getElementById("image").files[0];
+  const image = imageInput.files[0];
 
   if (!title) {
     alert("Judul wajib diisi!");
@@ -108,8 +135,11 @@ document.getElementById("postForm").addEventListener("submit", function(e) {
   }
 
   alert("Form valid, siap kirim!");
+  // munculin tombol lihat postingan
+  lihatPostinganBtn.style.display = "inline-block";
 });
 </script>
+
 
 
 <footer style="text-align:center;padding:40px 0">
