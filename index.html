@@ -71,25 +71,31 @@
     const password = document.getElementById('password').value.trim();
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzapZ2eOZ6js8EUxyaTgphq0EnVS7Yw66-aW30yuuDwG4bYQhQWJCHzLpTXkUOch1VN/exec", {
-        method: "POST",
-        body: JSON.stringify({ username, password }),
-        headers: { "Content-Type": "application/json" }
-      });
-      const result = await response.json();
+      const form = new URLSearchParams();
+form.append("username", username);
+form.append("password", password);
 
-      if (result.success) {
-        // kalau cocok → buka admin.html
-        window.location.href = "admin.html";
-      } else {
-        // kalau tidak cocok → notif error
-        alert("Login dan password salah!");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Terjadi error saat login, coba lagi.");
-    }
-  });
+const formData = new URLSearchParams();
+formData.append("username", username);
+formData.append("password", password);
+
+const response = await fetch(
+  "https://script.google.com/macros/s/AKfycbzapZ2eOZ6js8EUxyaTgphq0EnVS7Yw66-aW30yuuDwG4bYQhQWJCHzLpTXkUOch1VN/exec",
+  {
+    method: "POST",
+    body: formData
+  }
+);
+
+const result = await response.json();
+
+if (result.success) {
+  // Login berhasil
+  window.location.href = "admin.html";
+} else {
+  // Login gagal
+  alert("Username atau password salah!");
+}
 </script>
 
 </body>
