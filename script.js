@@ -205,8 +205,7 @@ navbar.style.display = "none";
   wm.style.cursor = 'pointer';
 
   document.body.appendChild(wm);
-    })();
-    //]]>
+    
 
 
  /* ===============================
