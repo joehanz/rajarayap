@@ -107,14 +107,16 @@ style="width:100%;height:77vh;object-fit:cover;display:block;">
 </footer>
 
 <script src="script.js"></script>
-  <script>
+<script>
 const API = "https://script.google.com/macros/s/AKfycbzapZ2eOZ6js8EUxyaTgphq0EnVS7Yw66-aW30yuuDwG4bYQhQWJCHzLpTXkUOch1VN/exec";
 
 const slug = new URLSearchParams(location.search).get("slug");
 
-fetch(API + "?slug=" + slug)
+fetch(API + "?slug=" + encodeURIComponent(slug) + "&_=" + Date.now())
   .then(res => res.json())
   .then(data => {
+
+    console.log("DATA :", data);
 
     if (!data || !data.title) {
       document.body.innerHTML = "<h2 style='padding:120px;text-align:center'>Artikel tidak ditemukan.</h2>";
@@ -123,16 +125,34 @@ fetch(API + "?slug=" + slug)
 
     document.title = data.title + " | RAJA RAYAP";
 
-    document.getElementById("postImage").src = data.image;
+    const img = document.getElementById("postImage");
+
+    img.onload = function () {
+      console.log("✅ Gambar berhasil dimuat");
+    };
+
+    img.onerror = function () {
+      console.error("❌ Gambar gagal dimuat");
+      console.log("URL :", data.image);
+
+      // Tes otomatis endpoint thumbnail jika uc gagal
+      if (data.image.includes("uc?export=view&id=")) {
+        const fileId = data.image.split("id=")[1];
+        img.src = "https://drive.google.com/thumbnail?id=" + fileId + "&sz=w2000";
+      }
+    };
+
+    img.src = data.image.trim();
+
     document.getElementById("postTitle").textContent = data.title;
-    document.getElementById("postDate").innerHTML = "Update : " + data.created_at;
-    document.getElementById("postDesc").innerHTML = data.description;
+    document.getElementById("postDate").textContent = "Update : " + data.created_at;
+    document.getElementById("postDesc").textContent = data.description;
 
     document.getElementById("postContainer").style.display = "block";
 
   })
   .catch(err => {
-    console.error(err);
+    console.error("Fetch Error :", err);
   });
 </script>
 </body>
