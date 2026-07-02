@@ -1,21 +1,64 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Control Panel Admin | RAJA RAYAP</title>
+  <!-- BASIC META -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<script>
-// Proteksi: wajib login melalui popup index.html
-if (sessionStorage.getItem("adminLogin") !== "true") {
-    location.replace("index.html");
-}
-</script>
+  <title>Control Panel Admin | RAJA RAYAP</title>
+  <meta name="description" content="Halaman kontrol panel admin untuk mengelola konten RAJA RAYAP" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="language" content="id" />
 
-<!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
- <link rel="stylesheet" href="style.css" />
+  <!-- CANONICAL -->
+  <link rel="canonical" href="https://joehanz.github.io/rajarayap/admin.html" />
+
+  <!-- ICONS & MANIFEST (PWA) -->
+  <link rel="icon" href="https://raw.githubusercontent.com/joehanz/rajarayap/refs/heads/main/images/rajarayap.icon.webp" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joehanz/rajarayap/refs/heads/main/images/rajarayap.icon.webp" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Control Panel Admin | RAJA RAYAP" />
+  <meta property="og:description" content="Halaman kontrol panel admin untuk mengelola konten RAJA RAYAP" />
+  <meta property="og:url" content="https://joehanz.github.io/rajarayap/admin.html" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/joehanz/rajarayap/refs/heads/main/images/poster%20raja%20rayap%202.webp" />
+  <meta property="og:site_name" content="RAJA RAYAP" />
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Control Panel Admin | RAJA RAYAP" />
+  <meta name="twitter:description" content="Halaman kontrol panel admin untuk mengelola konten RAJA RAYAP" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/joehanz/rajarayap/refs/heads/main/images/poster%20raja%20rayap%202.webp" />
+
+  <!-- FONTS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- STRUCTURED DATA -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Control Panel Admin | RAJA RAYAP",
+      "url": "https://joehanz.github.io/rajarayap/admin.html",
+      "description": "Halaman kontrol panel admin untuk mengelola konten RAJA RAYAP"
+    }
+  </script>
+
+  <!-- PROTEKSI LOGIN -->
+  <script>
+    if (sessionStorage.getItem("adminLogin") !== "true") {
+      location.replace("index.html");
+    }
+  </script>
 </head>
+
 
 <body>
 
