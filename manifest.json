@@ -1,0 +1,22 @@
+{
+  "name": "RAJA RAYAP",
+  "short_name": "RajaRayap",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/rajarayap.icon.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "images/rajarayap.icon.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}
