@@ -3,4 +3,4 @@ Disallow: /404.html
 Disallow: /update.html
 Allow: /
 
-Sitemap: https://rajarayap.com
+Sitemap: https://rajarayap.com/sitemap.xml
