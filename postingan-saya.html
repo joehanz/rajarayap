@@ -72,30 +72,32 @@
 </nav>
 
 <!-- CONTENT -->
-<section class="intro" style="padding-top:100px">
-  <div id="postContainer" class="max-w-4xl mx-auto text-center">
-    <img id="postImage" class="w-full" style="height:77vh;object-fit:cover;" alt="Post Image"/>
-    <h1 id="postTitle" class="text-2xl font-bold mt-4"></h1>
-    <p id="postDate" class="text-sm text-gray-500 mt-1"></p>
-    <p id="postDescription" class="text-base mt-3"></p>
-  </div>
-</section>
+<section id="postContainer" style="padding-top:80px;display:none">
 
-<script>
-  // ambil data dari Apps Script endpoint
-  fetch("https://script.google.com/macros/s/AKfycbyUFTPTMB8GyAW-kxbs61yRd-qAEouzZ9h2gm6Bmkc/exec?action=getPost&id=IKL000002")
-    .then(res => res.json())
-    .then(data => {
-      if(data.success){
-        const ad = data.post;
-        document.getElementById("postImage").src = ad.image;
-        document.getElementById("postTitle").textContent = ad.title;
-        document.getElementById("postDate").textContent = "Update: " + new Date(ad.created_at).toLocaleString("id-ID");
-        document.getElementById("postDescription").textContent = ad.description;
-      }
-    })
-    .catch(err => console.error(err));
-</script>
+    <img id="postImage"
+         style="
+         width:100%;
+         height:77vh;
+         object-fit:cover;
+         display:block;">
+
+    <div class="max-w-4xl mx-auto px-6 py-8">
+
+        <h1 id="postTitle"
+            class="text-4xl font-bold mb-2">
+        </h1>
+
+        <div id="postDate"
+             class="text-gray-400 text-sm mb-6">
+        </div>
+
+        <div id="postDesc"
+             class="leading-8 text-lg whitespace-pre-line">
+        </div>
+
+    </div>
+
+</section>
 
 <center>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6458870303612779" crossorigin="anonymous"></script>
@@ -108,5 +110,33 @@
 </footer>
 
 <script src="script.js"></script>
+  <script>
+const API = "https://script.google.com/macros/s/AKfycbzapZ2eOZ6js8EUxyaTgphq0EnVS7Yw66-aW30yuuDwG4bYQhQWJCHzLpTXkUOch1VN/exec";
+
+const slug = new URLSearchParams(location.search).get("slug");
+
+fetch(API + "?slug=" + slug)
+  .then(res => res.json())
+  .then(data => {
+
+    if (!data || !data.title) {
+      document.body.innerHTML = "<h2 style='padding:120px;text-align:center'>Artikel tidak ditemukan.</h2>";
+      return;
+    }
+
+    document.title = data.title + " | RAJA RAYAP";
+
+    document.getElementById("postImage").src = data.image;
+    document.getElementById("postTitle").textContent = data.title;
+    document.getElementById("postDate").innerHTML = "Update : " + data.created_at;
+    document.getElementById("postDesc").innerHTML = data.description;
+
+    document.getElementById("postContainer").style.display = "block";
+
+  })
+  .catch(err => {
+    console.error(err);
+  });
+</script>
 </body>
 </html>
