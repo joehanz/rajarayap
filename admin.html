@@ -79,7 +79,6 @@ if (sessionStorage.getItem("adminLogin") !== "true") {
 
   <!-- Tombol Lihat Postingan (hidden dulu) -->
   <button id="lihatPostingan"
-    onclick="window.location.href='postingan-saya.html'"
     class="mt-6 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold"
     style="display:none;">
     Lihat Postingan
@@ -110,6 +109,15 @@ imageInput.addEventListener("change", () => {
     preview.style.display = "none";
   }
 });
+
+// fungsi slug
+function generateSlug(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
 
 document.getElementById("postForm").addEventListener("submit", async function(e) {
   e.preventDefault();
@@ -142,7 +150,15 @@ document.getElementById("postForm").addEventListener("submit", async function(e)
       const result = await response.json();
       if (result.status === "success") {
         alert("Postingan berhasil disimpan dengan ID: " + result.id);
+
+        // bikin slug dari judul
+        const slug = generateSlug(title);
+
+        // update tombol agar link ke domain + slug
         lihatPostinganBtn.style.display = "inline-block";
+        lihatPostinganBtn.onclick = () => {
+          window.location.href = `https://rajarayap.com/postingan-saya.html?slug=${slug}`;
+        };
       } else {
         alert("Error: " + result.message);
       }
@@ -153,9 +169,6 @@ document.getElementById("postForm").addEventListener("submit", async function(e)
   reader.readAsDataURL(image);
 });
 </script>
-
-
-
 
 <footer style="text-align:center;padding:40px 0">
 © 2026 Raja Rayap
