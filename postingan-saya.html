@@ -147,18 +147,32 @@
 class="intro"
 style="padding-top:100px">
 
-  <h1
-style="
-font-size:55px;
-font-weight:800;
-margin-bottom:40px">
+<section class="intro" style="padding-top:100px">
+  <div id="postContainer" class="max-w-4xl mx-auto text-center">
+    <img id="postImage" class="w-full" style="height:77vh;object-fit:cover;" alt="Post Image"/>
+    <h1 id="postTitle" class="text-2xl font-bold mt-4"></h1>
+    <p id="postDate" class="text-sm text-gray-500 mt-1"></p>
+    <p id="postDescription" class="text-base mt-3"></p>
+  </div>
+</section>
 
-About Us
+<script>
+  // ambil data dari Apps Script endpoint
+  fetch("https://script.google.com/macros/s/AKfycbyUFTPTMB8GyAW-kxbs61yRd-qAEouzZ9h2gm6Bmkc/dev")
+    .then(res => res.json())
+    .then(data => {
+      if(data.success){
+        const ad = data.post;
+        document.getElementById("postImage").src = ad.image;
+        document.getElementById("postTitle").textContent = ad.title;
+        document.getElementById("postDate").textContent = "Update: " + new Date(ad.created_at).toLocaleString("id-ID");
+        document.getElementById("postDescription").textContent = ad.description;
+      }
+    })
+    .catch(err => console.error(err));
+</script>
 
-</h1>
-
-S E T T I N G  -  D I S I N I
-
+  
 </section>
   <center>
    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6458870303612779"
