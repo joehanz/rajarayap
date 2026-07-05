@@ -420,6 +420,7 @@ border-radius:25px">
     <script src="script.js"></script>
 
     <!-- Widget Rajarayap -->
+<!-- Widget Rajarayap -->
 <div id="chat-widget"></div>
 <script>
   (function(){
@@ -451,16 +452,31 @@ border-radius:25px">
     const input = document.getElementById("chat-input");
     const sendBtn = document.getElementById("chat-send");
 
-    // Predefined Prompt Rajarayap
-    const predefinedPrompt = "Asisten Rajarayap: fokus pada produk anti rayap, pest control, tips rumah tangga, dan konten resmi Rajarayap.";
+    // Kamus jawaban Rajarayap
+    function getAnswer(userMessage){
+      const msg = userMessage.toLowerCase();
 
-    // Context Filter (lebih luwes)
-    function contextFilter(userMessage){
-      const coreTopics = ["rayap","pest","rumah","rajarayap","anti rayap"];
-      if(coreTopics.some(topic => userMessage.toLowerCase().includes(topic))){
-        return null; // masih relevan, lanjut ke jawaban
+      if(msg.includes("hallo") || msg.includes("halo")){
+        return "Hallo, ada yang bisa saya bantu?";
       }
-      return "Topik ini di luar layanan Rajarayap. Untuk info anti rayap, silakan cek Info Resmi di situs Rajarayap.";
+      if(msg.includes("kantor") || msg.includes("alamat")){
+        return "Kantor Rajarayap bisa kamu lihat di bagian Kontak situs resmi.";
+      }
+      if(msg.includes("pemilik")){
+        return "Informasi pemilik ada di halaman Mengenai Kami Rajarayap.";
+      }
+      if(msg.includes("rayap")){
+        return "Rayap adalah hama perusak kayu. Penjelasan lengkap ada di Info Terkini Rajarayap.";
+      }
+      if(msg.includes("layanan") || msg.includes("jasa")){
+        return "Layanan Rajarayap tersedia di bagian Info Resmi dan Karya Kami.";
+      }
+      if(msg.includes("info") || msg.includes("berita")){
+        return "Update terbaru bisa kamu lihat di bagian Info Terkini Rajarayap.";
+      }
+
+      // fallback default
+      return "Topik ini di luar layanan Rajarayap. Untuk info anti rayap, saya siap bantu.";
     }
 
     sendBtn.onclick = function(){
@@ -469,25 +485,12 @@ border-radius:25px">
       messages.innerHTML += `<div><b>Kamu:</b> ${userMessage}</div>`;
       input.value = "";
 
-      const filterResponse = contextFilter(userMessage);
-      if(filterResponse){
-        messages.innerHTML += `<div style="color:#2d3748"><b>Asisten:</b> ${filterResponse}</div>`;
-        return;
-      }
-
-      // Jawaban langsung (tanpa mengulang pertanyaan)
-      let aiResponse;
-      if(userMessage.toLowerCase().includes("makan")){
-        aiResponse = "Saya tidak makan, karena saya asisten digital Rajarayap 😊.";
-      } else {
-        aiResponse = "Informasi Rajarayap: " + predefinedPrompt + 
-          " Untuk detail, silakan cek bagian Info Terkini, Mengenai Kami, Karya Kami, atau Kontak di situs Rajarayap.";
-      }
-
+      const aiResponse = getAnswer(userMessage);
       messages.innerHTML += `<div style="color:#2d3748"><b>Asisten:</b> ${aiResponse}</div>`;
     };
   })();
 </script>
+
 
 
   </body>
