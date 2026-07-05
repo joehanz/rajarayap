@@ -419,17 +419,19 @@ border-radius:25px">
 
     <script src="script.js"></script>
 
-<!-- Widget Rajarayap -->
+<!-- Tombol awal -->
 <div id="chat-widget-button" 
      style="position:fixed;bottom:20px;right:20px;background:#3182ce;color:#fff;
             padding:10px 15px;border-radius:5px;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,0.2)">
   Chat dengan Asisten Rajarayap
 </div>
 
+<!-- Kotak chat -->
 <div id="chat-widget" style="display:none;position:fixed;bottom:70px;right:20px;width:300px;height:400px;
      background:#fff;border:1px solid #ccc;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,0.2)">
-  <div style="background:#2d3748;color:#fff;padding:8px;font-weight:bold">
-    Asisten Rajarayap
+  <div style="background:#2d3748;color:#fff;padding:8px;font-weight:bold;display:flex;justify-content:space-between;align-items:center">
+    <span>Admin Rajarayap</span>
+    <span id="chat-close" style="cursor:pointer;font-weight:bold">X</span>
   </div>
   <div id="chat-messages" style="padding:8px;height:300px;overflow-y:auto;font-size:14px"></div>
   <div style="display:flex;border-top:1px solid #ccc">
@@ -442,13 +444,22 @@ border-radius:25px">
 <script>
   const chatBtn = document.getElementById("chat-widget-button");
   const chatBox = document.getElementById("chat-widget");
+  const chatClose = document.getElementById("chat-close");
   const messages = document.getElementById("chat-messages");
   const input = document.getElementById("chat-input");
   const sendBtn = document.getElementById("chat-send");
 
+  // Klik tombol → buka chat + salam pembuka
   chatBtn.onclick = function(){
     chatBox.style.display = "block";
-    messages.innerHTML = `<div style="color:#2d3748"><b>Asisten:</b> Hallo, ada yang bisa dibantu?</div>`;
+    chatBtn.style.display = "none";
+    messages.innerHTML = `<div style="color:#2d3748"><b>Admin:</b> Hallo, ada yang bisa dibantu?</div>`;
+  };
+
+  // Klik X → tutup chat, kembali ke tombol
+  chatClose.onclick = function(){
+    chatBox.style.display = "none";
+    chatBtn.style.display = "block";
   };
 
   // Kamus jawaban FAQ Rajarayap
@@ -478,15 +489,17 @@ border-radius:25px">
     return "Topik ini di luar layanan Rajarayap. Untuk info anti rayap, saya siap bantu.";
   }
 
+  // Kirim pertanyaan → hanya tampil jawaban
   sendBtn.onclick = function(){
     const userMessage = input.value.trim();
     if(!userMessage) return;
     input.value = "";
 
     const aiResponse = getAnswer(userMessage);
-    messages.innerHTML += `<div style="color:#2d3748"><b>Asisten:</b> ${aiResponse}</div>`;
+    messages.innerHTML += `<div style="color:#2d3748"><b>Admin:</b> ${aiResponse}</div>`;
   };
 </script>
+
 
 
   </body>
