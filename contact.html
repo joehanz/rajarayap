@@ -418,7 +418,6 @@ border-radius:25px">
     </footer>
 
     <script src="script.js"></script>
-    <script src="script.js"></script>
 <!-- Widget Rajarayap -->
 <div id="chat-widget"></div>
 <script>
@@ -440,7 +439,8 @@ border-radius:25px">
       </div>
       <div id="chat-messages" style="padding:8px;height:300px;overflow-y:auto;font-size:14px"></div>
       <div style="display:flex;border-top:1px solid #ccc">
-        <input id="chat-input" type="text" placeholder="Tulis pesan..." style="flex:1;padding:8px;border:none">
+        <input id="chat-input" type="text" placeholder="Tulis pesan..." 
+               style="flex:1;padding:8px;border:none;color:#000">
         <button id="chat-send" style="background:#3182ce;color:#fff;padding:8px;border:none">Kirim</button>
       </div>
     `;
@@ -451,15 +451,15 @@ border-radius:25px">
     const sendBtn = document.getElementById("chat-send");
 
     // Predefined Prompt Rajarayap
-    const predefinedPrompt = "Asisten ini hanya menjawab tentang Rajarayap, produk anti rayap, pest control, dan tips rumah tangga.";
+    const predefinedPrompt = "Asisten Rajarayap: fokus pada produk anti rayap, pest control, dan tips rumah tangga.";
 
-    // Context Filter
+    // Context Filter (lebih luwes)
     function contextFilter(userMessage){
-      const allowedTopics = ["rayap","pest","rumah","rajarayap","anti rayap"];
-      if(!allowedTopics.some(topic => userMessage.toLowerCase().includes(topic))){
-        return "Topik ini di luar layanan Rajarayap. Untuk info anti rayap, saya siap bantu.";
+      const coreTopics = ["rayap","pest","rumah","rajarayap","anti rayap"];
+      if(coreTopics.some(topic => userMessage.toLowerCase().includes(topic))){
+        return null; // masih relevan, lanjut ke jawaban
       }
-      return null;
+      return "Topik ini di luar layanan Rajarayap. Untuk info anti rayap, saya siap bantu.";
     }
 
     sendBtn.onclick = function(){
@@ -474,11 +474,13 @@ border-radius:25px">
         return;
       }
 
-      // Jawaban default (sementara, sebelum connect ke API)
-      const aiResponse = "Jawaban Rajarayap: " + predefinedPrompt + " Pertanyaanmu: " + userMessage;
+      // Jawaban default (sementara, bisa diganti connect ke API/ambil konten Rajarayap)
+      const aiResponse = "Jawaban Rajarayap: " + predefinedPrompt + " Pertanyaanmu: " + userMessage + 
+        ". Untuk detail, silakan cek konten resmi di situs Rajarayap.";
       messages.innerHTML += `<div style="color:#2d3748"><b>Asisten:</b> ${aiResponse}</div>`;
     };
   })();
 </script>
+
   </body>
 </html>
