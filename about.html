@@ -173,6 +173,67 @@ perlindungan terbaik bagi setiap hunian di Indonesia.
 </footer>
 
 <script src="script.js"></script>
+<!-- Widget Rajarayap -->
+<div id="chat-widget"></div>
+<script>
+  (function(){
+    const widget = document.createElement("div");
+    widget.id = "rajarayap-chat";
+    widget.style.position = "fixed";
+    widget.style.bottom = "20px";
+    widget.style.right = "20px";
+    widget.style.width = "300px";
+    widget.style.height = "400px";
+    widget.style.background = "#fff";
+    widget.style.border = "1px solid #ccc";
+    widget.style.borderRadius = "8px";
+    widget.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+    widget.innerHTML = `
+      <div style="background:#2d3748;color:#fff;padding:8px;font-weight:bold">
+        Asisten Rajarayap
+      </div>
+      <div id="chat-messages" style="padding:8px;height:300px;overflow-y:auto;font-size:14px"></div>
+      <div style="display:flex;border-top:1px solid #ccc">
+        <input id="chat-input" type="text" placeholder="Tulis pesan..." style="flex:1;padding:8px;border:none">
+        <button id="chat-send" style="background:#3182ce;color:#fff;padding:8px;border:none">Kirim</button>
+      </div>
+    `;
+    document.body.appendChild(widget);
+
+    const messages = document.getElementById("chat-messages");
+    const input = document.getElementById("chat-input");
+    const sendBtn = document.getElementById("chat-send");
+
+    // Predefined Prompt Rajarayap
+    const predefinedPrompt = "Asisten ini hanya menjawab tentang Rajarayap, produk anti rayap, pest control, dan tips rumah tangga.";
+
+    // Context Filter
+    function contextFilter(userMessage){
+      const allowedTopics = ["rayap","pest","rumah","rajarayap","anti rayap"];
+      if(!allowedTopics.some(topic => userMessage.toLowerCase().includes(topic))){
+        return "Topik ini di luar layanan Rajarayap. Untuk info anti rayap, saya siap bantu.";
+      }
+      return null;
+    }
+
+    sendBtn.onclick = function(){
+      const userMessage = input.value.trim();
+      if(!userMessage) return;
+      messages.innerHTML += `<div><b>Kamu:</b> ${userMessage}</div>`;
+      input.value = "";
+
+      const filterResponse = contextFilter(userMessage);
+      if(filterResponse){
+        messages.innerHTML += `<div style="color:#2d3748"><b>Asisten:</b> ${filterResponse}</div>`;
+        return;
+      }
+
+      // Jawaban default (sementara, sebelum connect ke API)
+      const aiResponse = "Jawaban Rajarayap: " + predefinedPrompt + " Pertanyaanmu: " + userMessage;
+      messages.innerHTML += `<div style="color:#2d3748"><b>Asisten:</b> ${aiResponse}</div>`;
+    };
+  })();
+</script>
 
 </body>
 </html>
