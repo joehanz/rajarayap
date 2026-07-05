@@ -183,7 +183,7 @@
     /* ===============================
        KONFIGURASI
     =============================== */
-    var REDIRECT_URL = "/akses-ditolak.html"; // ganti jika mau
+    var REDIRECT_URL = "404.html"; // ganti jika mau
     var DETECT_DELAY = 1200; // ms
 
     /* ===============================
