@@ -418,7 +418,8 @@ border-radius:25px">
     </footer>
 
     <script src="script.js"></script>
-<!-- Widget Rajarayap -->
+
+    <!-- Widget Rajarayap -->
 <div id="chat-widget"></div>
 <script>
   (function(){
@@ -451,7 +452,7 @@ border-radius:25px">
     const sendBtn = document.getElementById("chat-send");
 
     // Predefined Prompt Rajarayap
-    const predefinedPrompt = "Asisten Rajarayap: fokus pada produk anti rayap, pest control, dan tips rumah tangga.";
+    const predefinedPrompt = "Asisten Rajarayap: fokus pada produk anti rayap, pest control, tips rumah tangga, dan konten resmi Rajarayap.";
 
     // Context Filter (lebih luwes)
     function contextFilter(userMessage){
@@ -459,7 +460,7 @@ border-radius:25px">
       if(coreTopics.some(topic => userMessage.toLowerCase().includes(topic))){
         return null; // masih relevan, lanjut ke jawaban
       }
-      return "Topik ini di luar layanan Rajarayap. Untuk info anti rayap, saya siap bantu.";
+      return "Topik ini di luar layanan Rajarayap. Untuk info anti rayap, silakan cek Info Resmi di situs Rajarayap.";
     }
 
     sendBtn.onclick = function(){
@@ -474,13 +475,20 @@ border-radius:25px">
         return;
       }
 
-      // Jawaban default (sementara, bisa diganti connect ke API/ambil konten Rajarayap)
-      const aiResponse = "Jawaban Rajarayap: " + predefinedPrompt + " Pertanyaanmu: " + userMessage + 
-        ". Untuk detail, silakan cek konten resmi di situs Rajarayap.";
+      // Jawaban langsung (tanpa mengulang pertanyaan)
+      let aiResponse;
+      if(userMessage.toLowerCase().includes("makan")){
+        aiResponse = "Saya tidak makan, karena saya asisten digital Rajarayap 😊.";
+      } else {
+        aiResponse = "Informasi Rajarayap: " + predefinedPrompt + 
+          " Untuk detail, silakan cek bagian Info Terkini, Mengenai Kami, Karya Kami, atau Kontak di situs Rajarayap.";
+      }
+
       messages.innerHTML += `<div style="color:#2d3748"><b>Asisten:</b> ${aiResponse}</div>`;
     };
   })();
 </script>
+
 
   </body>
 </html>
